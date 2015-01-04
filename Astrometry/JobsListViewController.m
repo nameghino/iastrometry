@@ -12,6 +12,8 @@
 #import "JobsListTableViewCell.h"
 #import "JobDetailViewController.h"
 
+static NSString * const kHiddenJobsUserDefaultsKey = @"kHiddenJobsUserDefaultsKey";
+
 typedef NS_ENUM(NSInteger, JobsTableViewSection) {
     kSubmissionsSection = 0,
     kJobsSection = 1
@@ -23,13 +25,18 @@ typedef NS_ENUM(NSInteger, JobsTableViewSection) {
 @property(nonatomic, strong) NSMutableDictionary *submissions;
 @property(nonatomic, strong) NSMutableArray *jobIds;
 @property(nonatomic, strong) NSMutableArray *submissionIds;
+@property(nonatomic, strong) NSMutableArray *hiddenJobIds;
 @property(nonatomic, strong) AstrometryJob *currentJob;
+@property(nonatomic, strong) UIRefreshControl *refreshControl;
 @end
 
 @interface JobsListViewController (UIImagePickerControllerDelegate) <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @end
 
 @interface JobsListViewController (UITableViewDataSource) <UITableViewDataSource>
+@end
+
+@interface JobsListViewController (UITableViewDelegate) <UITableViewDelegate>
 @end
 
 @implementation JobsListViewController
@@ -41,13 +48,29 @@ typedef NS_ENUM(NSInteger, JobsTableViewSection) {
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
                                                                                            target:self
                                                                                            action:@selector(startNewJobWorkflow:)];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
                                                                                           target:self
-                                                                                          action:@selector(updateJobsList:)];
+                                                                                          action:@selector(showActionMenu:)];
     
     self.jobsTableView.dataSource = self;
+    self.jobsTableView.delegate = self;
     self.jobsTableView.rowHeight = UITableViewAutomaticDimension;
     self.jobsTableView.estimatedRowHeight = [JobsListTableViewCell estimatedRowHeight];
+    
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self
+                            action:@selector(updateJobsList:)
+                  forControlEvents:UIControlEventValueChanged];
+
+    [self.jobsTableView addSubview:self.refreshControl];
+
+
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    self.jobIds = [[NSMutableArray alloc] init];
+    self.submissionIds = [[NSMutableArray alloc] init];
+    self.hiddenJobIds = [[defaults objectForKey:kHiddenJobsUserDefaultsKey] mutableCopy] ? : [[NSMutableArray alloc] init];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -56,6 +79,20 @@ typedef NS_ENUM(NSInteger, JobsTableViewSection) {
                                              selector:@selector(sessionKeyOperationFinished:)
                                                  name:kAstrometryServiceSessionKeyOperationFinishedNotificationIdentifier
                                                object:service];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // only one segue
+    NSIndexPath *indexPath = [self.jobsTableView indexPathForCell:sender];
+    id key = self.jobIds[indexPath.row];
+    AstrometryJob *job = self.jobs[key];
+    JobDetailViewController *detail = [segue destinationViewController];
+    detail.job = job;
 }
 
 -(void) updateJobsList:(id) sender {
@@ -67,10 +104,14 @@ typedef NS_ENUM(NSInteger, JobsTableViewSection) {
         [jobs enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             [sself.jobIds addObject:[obj stringValue]];
         }];
-        sself.jobs = [[NSMutableDictionary alloc] init];
+        
+        if (!sself.jobs) {
+            sself.jobs = [[NSMutableDictionary alloc] init];
+        }
         
         for (NSString *jobId in sself.jobIds) {
-            AstrometryJob *job = [[AstrometryJob alloc] init];
+            AstrometryJob *job = sself.jobs[jobId] ? : [[AstrometryJob alloc] init];
+            if (job.isLoaded) { continue; }
             job.jobId = jobId;
             sself.jobs[jobId] = job;
             
@@ -104,7 +145,7 @@ typedef NS_ENUM(NSInteger, JobsTableViewSection) {
                                  [AlertDisplayer showError:error inViewController:self];
                              }];
     }
-    
+    [self.refreshControl endRefreshing];
 }
 
 -(void) sessionKeyOperationFinished:(NSNotification *) notification {
@@ -154,10 +195,6 @@ typedef NS_ENUM(NSInteger, JobsTableViewSection) {
 }
 
 -(void) processCurrentJob {
-    if (!self.submissionIds) {
-        self.submissionIds = [[NSMutableArray alloc] init];
-        self.submissions = [[NSMutableDictionary alloc] init];
-    }
     WEAKIFY(self);
     [[AstrometryService sharedInstance] performJobUpload:self.currentJob
                                         withSuccessBlock:^{
@@ -174,20 +211,35 @@ typedef NS_ENUM(NSInteger, JobsTableViewSection) {
                                         }];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void) saveHiddenJobsList {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:self.hiddenJobIds forKey:kHiddenJobsUserDefaultsKey];
+    [defaults synchronize];
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // only one segue
-    NSIndexPath *indexPath = [self.jobsTableView indexPathForCell:sender];
-    id key = self.jobIds[indexPath.row];
-    AstrometryJob *job = self.jobs[key];
-    JobDetailViewController *detail = [segue destinationViewController];
-    detail.job = job;
+-(void) showActionMenu:(id) sender {
+    UIAlertController *menuController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    WEAKIFY(self)
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel
+                                                         handler:^(UIAlertAction *action) {
+                                                             STRONGIFY(welf);
+                                                             [sself dismissViewControllerAnimated:YES completion:NULL];
+                                                         }];
+    
+    UIAlertAction *unhideAllAction = [UIAlertAction actionWithTitle:@"Show all jobs"
+                                                              style:UIAlertActionStyleDefault
+                                                            handler:^(UIAlertAction *action) {
+                                                                STRONGIFY(welf);
+                                                                [sself.hiddenJobIds removeAllObjects];
+                                                                [sself updateJobsList:action];
+                                                            }];
+    
+    [menuController addAction:unhideAllAction];
+    [menuController addAction:cancelAction];
+    
+    [self presentViewController:menuController animated:YES completion:NULL];
 }
-
 
 @end
 
@@ -229,6 +281,7 @@ typedef NS_ENUM(NSInteger, JobsTableViewSection) {
         case kSubmissionsSection:
             return [self.submissionIds count];
         case kJobsSection:
+            [self.jobIds removeObjectsInArray:self.hiddenJobIds];
             return [self.jobIds count];
     }
     return 0;
@@ -237,7 +290,10 @@ typedef NS_ENUM(NSInteger, JobsTableViewSection) {
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     switch (section) {
         case kSubmissionsSection:
-            return @"Submissions";
+            if ([self.submissionIds count] != 0) {
+                return @"Submissions";
+            }
+            return nil;
         case kJobsSection:
             return @"Jobs";
     }
@@ -259,6 +315,38 @@ typedef NS_ENUM(NSInteger, JobsTableViewSection) {
     AstrometryJob *job = [self jobAtIndexPath:indexPath];
     [cell setData:job.viewModel];
     return cell;
+}
+
+-(NSString *) tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
+    if (section == kJobsSection) {
+        NSInteger hiddenCount = [self.hiddenJobIds count];
+        if (hiddenCount > 0) {
+            return [NSString stringWithFormat:@"%ld hidden job%@", hiddenCount, hiddenCount == 1 ? @"" : @"s"];
+        }
+    }
+    return nil;
+}
+
+@end
+
+@implementation JobsListViewController (UITableViewDelegate)
+
+-(BOOL) tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return NO;//indexPath.section == kJobsSection;
+}
+
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        NSString *jobId = self.jobIds[indexPath.row];
+        [self.jobs removeObjectForKey:jobId];
+        [self.hiddenJobIds addObject:jobId];
+        [self saveHiddenJobsList];
+        [self.jobsTableView reloadData];
+    }
+}
+
+-(NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return @"Hide";
 }
 
 @end

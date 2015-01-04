@@ -19,6 +19,8 @@ typedef NS_ENUM(NSInteger, AstrometryJobStatus) {
 @class UIImage, AstrometryJobViewModel;
 @protocol ViewModelProtocol;
 @interface AstrometryJob : NSObject
+
+
 @property(nonatomic, strong) NSData *imageData;
 @property(nonatomic, strong) NSString *jobId;
 @property(nonatomic, strong) NSString *submissionId;
@@ -30,6 +32,8 @@ typedef NS_ENUM(NSInteger, AstrometryJobStatus) {
 
 @property(nonatomic, assign) float rightAscension;
 @property(nonatomic, assign) float declination;
+
+@property(nonatomic, assign, getter=isLoaded) BOOL loaded;
 
 @property(nonatomic, strong, readonly) NSString *key;
 @property(nonatomic, strong, readonly) AstrometryJobViewModel<ViewModelProtocol> *viewModel;

@@ -18,6 +18,7 @@
                failure:(ASResultFailureBlock)failure {
     
     AstrometryJob *job = context[@"job"];
+    job.loaded = YES;
     
     job.rightAscension = [response[@"calibration"][@"ra"] floatValue];
     job.declination = [response[@"calibration"][@"dec"] floatValue];

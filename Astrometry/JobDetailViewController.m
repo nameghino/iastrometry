@@ -29,7 +29,6 @@ static NSString * const kGroupingInformationRowsKey = @"rows";
 @end
 
 @interface JobDetailViewController (UITableViewDataSource) <UITableViewDataSource>
-
 @end
 
 @implementation JobDetailViewController

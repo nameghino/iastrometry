@@ -67,11 +67,7 @@
 @implementation WebKitViewController (WKNavigationDelegate)
 
 -(void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error {
-    NSLog(@"failed: %@", [error localizedDescription]);
-}
-
--(void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
-    NSLog(@"win");
+    [AlertDisplayer showError:error inViewController:self];
 }
 
 @end
