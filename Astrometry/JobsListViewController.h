@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  JobsListViewController.h
 //  Astrometry
 //
 //  Created by Nicolas Ameghino on 1/3/15.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface JobsListViewController : UIViewController
 
 @end
-

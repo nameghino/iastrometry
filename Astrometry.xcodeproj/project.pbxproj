@@ -9,11 +9,21 @@
 /* Begin PBXBuildFile section */
 		35E85A701A58884700D8CBB8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 35E85A6F1A58884700D8CBB8 /* main.m */; };
 		35E85A731A58884700D8CBB8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 35E85A721A58884700D8CBB8 /* AppDelegate.m */; };
-		35E85A761A58884700D8CBB8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35E85A751A58884700D8CBB8 /* ViewController.m */; };
 		35E85A791A58884700D8CBB8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35E85A771A58884700D8CBB8 /* Main.storyboard */; };
 		35E85A7B1A58884700D8CBB8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35E85A7A1A58884700D8CBB8 /* Images.xcassets */; };
 		35E85A7E1A58884700D8CBB8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35E85A7C1A58884700D8CBB8 /* LaunchScreen.xib */; };
 		35E85A8A1A58884700D8CBB8 /* AstrometryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 35E85A891A58884700D8CBB8 /* AstrometryTests.m */; };
+		35E85A961A58887B00D8CBB8 /* AstrometryService.m in Sources */ = {isa = PBXBuildFile; fileRef = 35E85A951A58887B00D8CBB8 /* AstrometryService.m */; };
+		35E85A9E1A58A6CB00D8CBB8 /* JobsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35E85A9D1A58A6CB00D8CBB8 /* JobsListViewController.m */; };
+		35E85AA11A58A80A00D8CBB8 /* JobsListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 35E85AA01A58A80A00D8CBB8 /* JobsListTableViewCell.m */; };
+		35E85AA61A58A85400D8CBB8 /* BasicTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 35E85AA51A58A85400D8CBB8 /* BasicTableViewCell.m */; };
+		35E85AAA1A58AAC400D8CBB8 /* AstrometryJob.m in Sources */ = {isa = PBXBuildFile; fileRef = 35E85AA91A58AAC400D8CBB8 /* AstrometryJob.m */; };
+		35E85AAE1A58ADDD00D8CBB8 /* AlertDisplayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 35E85AAD1A58ADDD00D8CBB8 /* AlertDisplayer.m */; };
+		35E85AB31A58CB0F00D8CBB8 /* AstrometryJobViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 35E85AB21A58CB0F00D8CBB8 /* AstrometryJobViewModel.m */; };
+		35E85ABB1A58E60900D8CBB8 /* ResponseProcessorFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 35E85ABA1A58E60900D8CBB8 /* ResponseProcessorFactory.m */; };
+		35E85AC01A58E84200D8CBB8 /* JobStatusResponseProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 35E85ABF1A58E84200D8CBB8 /* JobStatusResponseProcessor.m */; };
+		35E85AC61A58F27900D8CBB8 /* JobDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35E85AC51A58F27900D8CBB8 /* JobDetailViewController.m */; };
+		35E85ACA1A59215000D8CBB8 /* WebKitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35E85AC91A59215000D8CBB8 /* WebKitViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,14 +42,38 @@
 		35E85A6F1A58884700D8CBB8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		35E85A711A58884700D8CBB8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		35E85A721A58884700D8CBB8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		35E85A741A58884700D8CBB8 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		35E85A751A58884700D8CBB8 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		35E85A781A58884700D8CBB8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		35E85A7A1A58884700D8CBB8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		35E85A7D1A58884700D8CBB8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		35E85A831A58884700D8CBB8 /* AstrometryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AstrometryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		35E85A881A58884700D8CBB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		35E85A891A58884700D8CBB8 /* AstrometryTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AstrometryTests.m; sourceTree = "<group>"; };
+		35E85A941A58887B00D8CBB8 /* AstrometryService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AstrometryService.h; sourceTree = "<group>"; };
+		35E85A951A58887B00D8CBB8 /* AstrometryService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AstrometryService.m; sourceTree = "<group>"; };
+		35E85A9C1A58A6CB00D8CBB8 /* JobsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobsListViewController.h; sourceTree = "<group>"; };
+		35E85A9D1A58A6CB00D8CBB8 /* JobsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobsListViewController.m; sourceTree = "<group>"; };
+		35E85A9F1A58A80A00D8CBB8 /* JobsListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobsListTableViewCell.h; sourceTree = "<group>"; };
+		35E85AA01A58A80A00D8CBB8 /* JobsListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobsListTableViewCell.m; sourceTree = "<group>"; };
+		35E85AA41A58A85400D8CBB8 /* BasicTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicTableViewCell.h; sourceTree = "<group>"; };
+		35E85AA51A58A85400D8CBB8 /* BasicTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicTableViewCell.m; sourceTree = "<group>"; };
+		35E85AA81A58AAC400D8CBB8 /* AstrometryJob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AstrometryJob.h; sourceTree = "<group>"; };
+		35E85AA91A58AAC400D8CBB8 /* AstrometryJob.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AstrometryJob.m; sourceTree = "<group>"; };
+		35E85AAC1A58ADDD00D8CBB8 /* AlertDisplayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertDisplayer.h; sourceTree = "<group>"; };
+		35E85AAD1A58ADDD00D8CBB8 /* AlertDisplayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertDisplayer.m; sourceTree = "<group>"; };
+		35E85AAF1A58AE8300D8CBB8 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		35E85AB11A58CB0F00D8CBB8 /* AstrometryJobViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AstrometryJobViewModel.h; sourceTree = "<group>"; };
+		35E85AB21A58CB0F00D8CBB8 /* AstrometryJobViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AstrometryJobViewModel.m; sourceTree = "<group>"; };
+		35E85AB41A58CCC800D8CBB8 /* ViewModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewModelProtocol.h; sourceTree = "<group>"; };
+		35E85AB81A58E50900D8CBB8 /* AstrometryServiceGenericCallbacks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AstrometryServiceGenericCallbacks.h; sourceTree = "<group>"; };
+		35E85AB91A58E60900D8CBB8 /* ResponseProcessorFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponseProcessorFactory.h; sourceTree = "<group>"; };
+		35E85ABA1A58E60900D8CBB8 /* ResponseProcessorFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResponseProcessorFactory.m; sourceTree = "<group>"; };
+		35E85ABC1A58E64600D8CBB8 /* ResponseProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponseProcessor.h; sourceTree = "<group>"; };
+		35E85ABE1A58E84200D8CBB8 /* JobStatusResponseProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobStatusResponseProcessor.h; sourceTree = "<group>"; };
+		35E85ABF1A58E84200D8CBB8 /* JobStatusResponseProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobStatusResponseProcessor.m; sourceTree = "<group>"; };
+		35E85AC41A58F27900D8CBB8 /* JobDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobDetailViewController.h; sourceTree = "<group>"; };
+		35E85AC51A58F27900D8CBB8 /* JobDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobDetailViewController.m; sourceTree = "<group>"; };
+		35E85AC81A59215000D8CBB8 /* WebKitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebKitViewController.h; sourceTree = "<group>"; };
+		35E85AC91A59215000D8CBB8 /* WebKitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebKitViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,10 +115,14 @@
 		35E85A6C1A58884700D8CBB8 /* Astrometry */ = {
 			isa = PBXGroup;
 			children = (
+				35E85AAB1A58ADCD00D8CBB8 /* Helpers */,
+				35E85AA71A58AAB300D8CBB8 /* Model */,
+				35E85AA31A58A83F00D8CBB8 /* Basic Cell */,
+				35E85AA21A58A81C00D8CBB8 /* Protocols */,
+				35E85A971A58A68900D8CBB8 /* View controllers */,
+				35E85A931A58886800D8CBB8 /* Service */,
 				35E85A711A58884700D8CBB8 /* AppDelegate.h */,
 				35E85A721A58884700D8CBB8 /* AppDelegate.m */,
-				35E85A741A58884700D8CBB8 /* ViewController.h */,
-				35E85A751A58884700D8CBB8 /* ViewController.m */,
 				35E85A771A58884700D8CBB8 /* Main.storyboard */,
 				35E85A7A1A58884700D8CBB8 /* Images.xcassets */,
 				35E85A7C1A58884700D8CBB8 /* LaunchScreen.xib */,
@@ -98,6 +136,7 @@
 			children = (
 				35E85A6E1A58884700D8CBB8 /* Info.plist */,
 				35E85A6F1A58884700D8CBB8 /* main.m */,
+				35E85AAF1A58AE8300D8CBB8 /* PrefixHeader.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -117,6 +156,129 @@
 				35E85A881A58884700D8CBB8 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		35E85A931A58886800D8CBB8 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				35E85ABD1A58E70500D8CBB8 /* Response processors */,
+				35E85AB81A58E50900D8CBB8 /* AstrometryServiceGenericCallbacks.h */,
+				35E85A941A58887B00D8CBB8 /* AstrometryService.h */,
+				35E85A951A58887B00D8CBB8 /* AstrometryService.m */,
+			);
+			name = Service;
+			sourceTree = "<group>";
+		};
+		35E85A971A58A68900D8CBB8 /* View controllers */ = {
+			isa = PBXGroup;
+			children = (
+				35E85AC71A59213A00D8CBB8 /* WebKit Controller */,
+				35E85AC31A58F25400D8CBB8 /* Job detail */,
+				35E85A981A58A69300D8CBB8 /* Jobs list */,
+			);
+			name = "View controllers";
+			sourceTree = "<group>";
+		};
+		35E85A981A58A69300D8CBB8 /* Jobs list */ = {
+			isa = PBXGroup;
+			children = (
+				35E85A9C1A58A6CB00D8CBB8 /* JobsListViewController.h */,
+				35E85A9D1A58A6CB00D8CBB8 /* JobsListViewController.m */,
+				35E85A9F1A58A80A00D8CBB8 /* JobsListTableViewCell.h */,
+				35E85AA01A58A80A00D8CBB8 /* JobsListTableViewCell.m */,
+			);
+			name = "Jobs list";
+			sourceTree = "<group>";
+		};
+		35E85AA21A58A81C00D8CBB8 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				35E85AB41A58CCC800D8CBB8 /* ViewModelProtocol.h */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
+		35E85AA31A58A83F00D8CBB8 /* Basic Cell */ = {
+			isa = PBXGroup;
+			children = (
+				35E85AA41A58A85400D8CBB8 /* BasicTableViewCell.h */,
+				35E85AA51A58A85400D8CBB8 /* BasicTableViewCell.m */,
+			);
+			name = "Basic Cell";
+			sourceTree = "<group>";
+		};
+		35E85AA71A58AAB300D8CBB8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				35E85AB01A58CAD600D8CBB8 /* Astrometry Job */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		35E85AAB1A58ADCD00D8CBB8 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				35E85AAC1A58ADDD00D8CBB8 /* AlertDisplayer.h */,
+				35E85AAD1A58ADDD00D8CBB8 /* AlertDisplayer.m */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		35E85AB01A58CAD600D8CBB8 /* Astrometry Job */ = {
+			isa = PBXGroup;
+			children = (
+				35E85AA81A58AAC400D8CBB8 /* AstrometryJob.h */,
+				35E85AA91A58AAC400D8CBB8 /* AstrometryJob.m */,
+				35E85AB11A58CB0F00D8CBB8 /* AstrometryJobViewModel.h */,
+				35E85AB21A58CB0F00D8CBB8 /* AstrometryJobViewModel.m */,
+			);
+			name = "Astrometry Job";
+			sourceTree = "<group>";
+		};
+		35E85ABD1A58E70500D8CBB8 /* Response processors */ = {
+			isa = PBXGroup;
+			children = (
+				35E85AC11A58EAF400D8CBB8 /* Framework */,
+				35E85AC21A58EAFC00D8CBB8 /* Implementations */,
+			);
+			name = "Response processors";
+			sourceTree = "<group>";
+		};
+		35E85AC11A58EAF400D8CBB8 /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+				35E85ABC1A58E64600D8CBB8 /* ResponseProcessor.h */,
+				35E85AB91A58E60900D8CBB8 /* ResponseProcessorFactory.h */,
+				35E85ABA1A58E60900D8CBB8 /* ResponseProcessorFactory.m */,
+			);
+			name = Framework;
+			sourceTree = "<group>";
+		};
+		35E85AC21A58EAFC00D8CBB8 /* Implementations */ = {
+			isa = PBXGroup;
+			children = (
+				35E85ABE1A58E84200D8CBB8 /* JobStatusResponseProcessor.h */,
+				35E85ABF1A58E84200D8CBB8 /* JobStatusResponseProcessor.m */,
+			);
+			name = Implementations;
+			sourceTree = "<group>";
+		};
+		35E85AC31A58F25400D8CBB8 /* Job detail */ = {
+			isa = PBXGroup;
+			children = (
+				35E85AC41A58F27900D8CBB8 /* JobDetailViewController.h */,
+				35E85AC51A58F27900D8CBB8 /* JobDetailViewController.m */,
+			);
+			name = "Job detail";
+			sourceTree = "<group>";
+		};
+		35E85AC71A59213A00D8CBB8 /* WebKit Controller */ = {
+			isa = PBXGroup;
+			children = (
+				35E85AC81A59215000D8CBB8 /* WebKitViewController.h */,
+				35E85AC91A59215000D8CBB8 /* WebKitViewController.m */,
+			);
+			name = "WebKit Controller";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,6 +330,7 @@
 				TargetAttributes = {
 					35E85A691A58884700D8CBB8 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = A45WY99R85;
 					};
 					35E85A821A58884700D8CBB8 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -219,9 +382,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				35E85A761A58884700D8CBB8 /* ViewController.m in Sources */,
+				35E85AAE1A58ADDD00D8CBB8 /* AlertDisplayer.m in Sources */,
+				35E85A961A58887B00D8CBB8 /* AstrometryService.m in Sources */,
+				35E85AB31A58CB0F00D8CBB8 /* AstrometryJobViewModel.m in Sources */,
+				35E85AAA1A58AAC400D8CBB8 /* AstrometryJob.m in Sources */,
 				35E85A731A58884700D8CBB8 /* AppDelegate.m in Sources */,
+				35E85AA11A58A80A00D8CBB8 /* JobsListTableViewCell.m in Sources */,
+				35E85AC01A58E84200D8CBB8 /* JobStatusResponseProcessor.m in Sources */,
 				35E85A701A58884700D8CBB8 /* main.m in Sources */,
+				35E85AA61A58A85400D8CBB8 /* BasicTableViewCell.m in Sources */,
+				35E85AC61A58F27900D8CBB8 /* JobDetailViewController.m in Sources */,
+				35E85ACA1A59215000D8CBB8 /* WebKitViewController.m in Sources */,
+				35E85A9E1A58A6CB00D8CBB8 /* JobsListViewController.m in Sources */,
+				35E85ABB1A58E60900D8CBB8 /* ResponseProcessorFactory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,6 +459,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREFIX_HEADER = Astrometry/PrefixHeader.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -326,6 +500,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREFIX_HEADER = Astrometry/PrefixHeader.pch;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -343,9 +518,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Astrometry/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -353,9 +532,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Astrometry/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
