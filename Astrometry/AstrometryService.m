@@ -29,7 +29,7 @@ static AstrometryService *sharedInstance;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedInstance = [AstrometryService new];
-        [sharedInstance getSessionKey];
+
     });
     return sharedInstance;
 }
@@ -53,7 +53,9 @@ static AstrometryService *sharedInstance;
 }
 
 -(void) updateNetworkActivityIndicatorStatus {
+#ifndef EXTENSION_TARGET
     [UIApplication sharedApplication].networkActivityIndicatorVisible = [[self.runningTasks allKeys] count] != 0;
+#endif
 }
 
 -(NSData *) formatParameters:(NSDictionary *)data {
@@ -171,12 +173,12 @@ static NSString * const kMultipartContentFilenameKey = @"Filename";
     return request;
 }
 
--(void) getSessionKey {
+-(void)performGetSessionKeyRequestWithSuccessBlock:(ASGetSessionKeyRequestSuccessBlock)success failure:(ASResultFailureBlock)failure {
     NSString *identifier = @"login";
     NSDictionary *loginDictionary = @{@"apikey": AstrometryAPIKey};
     NSMutableURLRequest *request = [self createRequestForEndpoint:identifier data:loginDictionary];
     WEAKIFY(self);
-    ASGenericSuccessBlock success = ^(id result) {
+    ASGenericSuccessBlock localSuccess = ^(id result) {
         STRONGIFY(welf);
         NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
         for (NSHTTPCookie *cookie in [storage cookies]) {
@@ -187,16 +189,20 @@ static NSString * const kMultipartContentFilenameKey = @"Filename";
         sself.sessionKey = result[@"session"];
         NSLog(@"got session key: %@", sself.sessionKey);
         
-        NSNotification *notification = [NSNotification notificationWithName:kAstrometryServiceSessionKeyOperationFinishedNotificationIdentifier
-                                                                     object:sself];
-        
-        [[NSNotificationCenter defaultCenter] postNotification:notification];
+        if (success) {
+            success();
+        } else {
+            NSNotification *notification = [NSNotification notificationWithName:kAstrometryServiceSessionKeyOperationFinishedNotificationIdentifier
+                                                                         object:sself];
+            
+            [[NSNotificationCenter defaultCenter] postNotification:notification];
+        }
     };
     
     [self sessionSendRequest:request
               withIdentifier:identifier
-                     success:success
-                     failure:NULL];
+                     success:localSuccess
+                     failure:failure];
     
 }
 

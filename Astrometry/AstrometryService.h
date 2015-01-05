@@ -25,6 +25,8 @@ typedef NS_ENUM(NSInteger, AstrometryServiceErrorCode) {
 typedef void(^ASMyJobsResultSuccessBlock)(NSArray *jobs);
 typedef void(^ASSubmitJobResultSuccessBlock)(void);
 typedef void(^ASSubmissionQuerySuccessBlock)(NSDictionary *data);
+typedef void(^ASGetSessionKeyRequestSuccessBlock)(void);
+
 
 @class AstrometryJob;
 @interface AstrometryService : NSObject
@@ -32,6 +34,7 @@ typedef void(^ASSubmissionQuerySuccessBlock)(NSDictionary *data);
 @property(nonatomic, assign, getter=isReady, readonly) BOOL ready;
 
 +(instancetype) sharedInstance;
+-(void) performGetSessionKeyRequestWithSuccessBlock:(ASGetSessionKeyRequestSuccessBlock) success failure:(ASResultFailureBlock) failure;
 -(void) performGetJobsRequestWithSuccessBlock:(ASMyJobsResultSuccessBlock) success failure:(ASResultFailureBlock) failure;
 -(void) performJobUpload:(AstrometryJob *) job withSuccessBlock:(ASSubmitJobResultSuccessBlock) success failure:(ASResultFailureBlock) failure;
 -(void) performSubmissionQueryForJob:(AstrometryJob *)job withSuccessBlock:(ASSubmissionQuerySuccessBlock) success failure:(ASResultFailureBlock) failure;
