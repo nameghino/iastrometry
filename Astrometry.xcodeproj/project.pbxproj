@@ -24,6 +24,15 @@
 		35E85AC01A58E84200D8CBB8 /* JobStatusResponseProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 35E85ABF1A58E84200D8CBB8 /* JobStatusResponseProcessor.m */; };
 		35E85AC61A58F27900D8CBB8 /* JobDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35E85AC51A58F27900D8CBB8 /* JobDetailViewController.m */; };
 		35E85ACA1A59215000D8CBB8 /* WebKitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35E85AC91A59215000D8CBB8 /* WebKitViewController.m */; };
+		35E85AD51A59C38500D8CBB8 /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35E85AD41A59C38500D8CBB8 /* ShareViewController.m */; };
+		35E85AD71A59C38500D8CBB8 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35E85AD61A59C38500D8CBB8 /* MainInterface.storyboard */; };
+		35E85ADA1A59C38500D8CBB8 /* AstrometryShareImageExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 35E85ACF1A59C38500D8CBB8 /* AstrometryShareImageExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		35E85AE11A5A2DA000D8CBB8 /* AstrometryService.m in Sources */ = {isa = PBXBuildFile; fileRef = 35E85A951A58887B00D8CBB8 /* AstrometryService.m */; };
+		35E85AE21A5A2F1700D8CBB8 /* ResponseProcessorFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 35E85ABA1A58E60900D8CBB8 /* ResponseProcessorFactory.m */; };
+		35E85AE31A5A2F1700D8CBB8 /* JobStatusResponseProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 35E85ABF1A58E84200D8CBB8 /* JobStatusResponseProcessor.m */; };
+		35E85AE51A5A325600D8CBB8 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35E85AE41A5A325600D8CBB8 /* MobileCoreServices.framework */; };
+		35E85AE61A5A34F000D8CBB8 /* AstrometryJob.m in Sources */ = {isa = PBXBuildFile; fileRef = 35E85AA91A58AAC400D8CBB8 /* AstrometryJob.m */; };
+		35E85AE71A5A34F000D8CBB8 /* AstrometryJobViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 35E85AB21A58CB0F00D8CBB8 /* AstrometryJobViewModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,7 +43,28 @@
 			remoteGlobalIDString = 35E85A691A58884700D8CBB8;
 			remoteInfo = Astrometry;
 		};
+		35E85AD81A59C38500D8CBB8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 35E85A621A58884600D8CBB8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 35E85ACE1A59C38500D8CBB8;
+			remoteInfo = AstrometryShareImageExtension;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		35E85ADE1A59C38500D8CBB8 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				35E85ADA1A59C38500D8CBB8 /* AstrometryShareImageExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		35E85A6A1A58884700D8CBB8 /* Astrometry.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Astrometry.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -74,6 +104,14 @@
 		35E85AC51A58F27900D8CBB8 /* JobDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobDetailViewController.m; sourceTree = "<group>"; };
 		35E85AC81A59215000D8CBB8 /* WebKitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebKitViewController.h; sourceTree = "<group>"; };
 		35E85AC91A59215000D8CBB8 /* WebKitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebKitViewController.m; sourceTree = "<group>"; };
+		35E85ACF1A59C38500D8CBB8 /* AstrometryShareImageExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AstrometryShareImageExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		35E85AD21A59C38500D8CBB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		35E85AD31A59C38500D8CBB8 /* ShareViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShareViewController.h; sourceTree = "<group>"; };
+		35E85AD41A59C38500D8CBB8 /* ShareViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareViewController.m; sourceTree = "<group>"; };
+		35E85AD61A59C38500D8CBB8 /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
+		35E85ADF1A5A2B6F00D8CBB8 /* Astrometry.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Astrometry.entitlements; sourceTree = "<group>"; };
+		35E85AE01A5A2B7500D8CBB8 /* AstrometryShareImageExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = AstrometryShareImageExtension.entitlements; sourceTree = "<group>"; };
+		35E85AE41A5A325600D8CBB8 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +129,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		35E85ACC1A59C38500D8CBB8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				35E85AE51A5A325600D8CBB8 /* MobileCoreServices.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -99,6 +145,7 @@
 			children = (
 				35E85A6C1A58884700D8CBB8 /* Astrometry */,
 				35E85A861A58884700D8CBB8 /* AstrometryTests */,
+				35E85AD01A59C38500D8CBB8 /* AstrometryShareImageExtension */,
 				35E85A6B1A58884700D8CBB8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -108,6 +155,7 @@
 			children = (
 				35E85A6A1A58884700D8CBB8 /* Astrometry.app */,
 				35E85A831A58884700D8CBB8 /* AstrometryTests.xctest */,
+				35E85ACF1A59C38500D8CBB8 /* AstrometryShareImageExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -115,6 +163,7 @@
 		35E85A6C1A58884700D8CBB8 /* Astrometry */ = {
 			isa = PBXGroup;
 			children = (
+				35E85ADF1A5A2B6F00D8CBB8 /* Astrometry.entitlements */,
 				35E85AAB1A58ADCD00D8CBB8 /* Helpers */,
 				35E85AA71A58AAB300D8CBB8 /* Model */,
 				35E85AA31A58A83F00D8CBB8 /* Basic Cell */,
@@ -281,6 +330,27 @@
 			name = "WebKit Controller";
 			sourceTree = "<group>";
 		};
+		35E85AD01A59C38500D8CBB8 /* AstrometryShareImageExtension */ = {
+			isa = PBXGroup;
+			children = (
+				35E85AE01A5A2B7500D8CBB8 /* AstrometryShareImageExtension.entitlements */,
+				35E85AD31A59C38500D8CBB8 /* ShareViewController.h */,
+				35E85AD41A59C38500D8CBB8 /* ShareViewController.m */,
+				35E85AD61A59C38500D8CBB8 /* MainInterface.storyboard */,
+				35E85AD11A59C38500D8CBB8 /* Supporting Files */,
+			);
+			path = AstrometryShareImageExtension;
+			sourceTree = "<group>";
+		};
+		35E85AD11A59C38500D8CBB8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				35E85AE41A5A325600D8CBB8 /* MobileCoreServices.framework */,
+				35E85AD21A59C38500D8CBB8 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -291,10 +361,12 @@
 				35E85A661A58884700D8CBB8 /* Sources */,
 				35E85A671A58884700D8CBB8 /* Frameworks */,
 				35E85A681A58884700D8CBB8 /* Resources */,
+				35E85ADE1A59C38500D8CBB8 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				35E85AD91A59C38500D8CBB8 /* PBXTargetDependency */,
 			);
 			name = Astrometry;
 			productName = Astrometry;
@@ -319,6 +391,23 @@
 			productReference = 35E85A831A58884700D8CBB8 /* AstrometryTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		35E85ACE1A59C38500D8CBB8 /* AstrometryShareImageExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 35E85ADB1A59C38500D8CBB8 /* Build configuration list for PBXNativeTarget "AstrometryShareImageExtension" */;
+			buildPhases = (
+				35E85ACB1A59C38500D8CBB8 /* Sources */,
+				35E85ACC1A59C38500D8CBB8 /* Frameworks */,
+				35E85ACD1A59C38500D8CBB8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AstrometryShareImageExtension;
+			productName = AstrometryShareImageExtension;
+			productReference = 35E85ACF1A59C38500D8CBB8 /* AstrometryShareImageExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -331,10 +420,24 @@
 					35E85A691A58884700D8CBB8 = {
 						CreatedOnToolsVersion = 6.1.1;
 						DevelopmentTeam = A45WY99R85;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					35E85A821A58884700D8CBB8 = {
 						CreatedOnToolsVersion = 6.1.1;
 						TestTargetID = 35E85A691A58884700D8CBB8;
+					};
+					35E85ACE1A59C38500D8CBB8 = {
+						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = A45WY99R85;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -353,6 +456,7 @@
 			targets = (
 				35E85A691A58884700D8CBB8 /* Astrometry */,
 				35E85A821A58884700D8CBB8 /* AstrometryTests */,
+				35E85ACE1A59C38500D8CBB8 /* AstrometryShareImageExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -372,6 +476,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		35E85ACD1A59C38500D8CBB8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				35E85AD71A59C38500D8CBB8 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,6 +518,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		35E85ACB1A59C38500D8CBB8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				35E85AD51A59C38500D8CBB8 /* ShareViewController.m in Sources */,
+				35E85AE31A5A2F1700D8CBB8 /* JobStatusResponseProcessor.m in Sources */,
+				35E85AE71A5A34F000D8CBB8 /* AstrometryJobViewModel.m in Sources */,
+				35E85AE11A5A2DA000D8CBB8 /* AstrometryService.m in Sources */,
+				35E85AE61A5A34F000D8CBB8 /* AstrometryJob.m in Sources */,
+				35E85AE21A5A2F1700D8CBB8 /* ResponseProcessorFactory.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -413,6 +538,11 @@
 			isa = PBXTargetDependency;
 			target = 35E85A691A58884700D8CBB8 /* Astrometry */;
 			targetProxy = 35E85A841A58884700D8CBB8 /* PBXContainerItemProxy */;
+		};
+		35E85AD91A59C38500D8CBB8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 35E85ACE1A59C38500D8CBB8 /* AstrometryShareImageExtension */;
+			targetProxy = 35E85AD81A59C38500D8CBB8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -518,6 +648,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Astrometry/Astrometry.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Astrometry/Info.plist;
@@ -532,6 +663,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Astrometry/Astrometry.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Astrometry/Info.plist;
@@ -576,6 +708,40 @@
 			};
 			name = Release;
 		};
+		35E85ADC1A59C38500D8CBB8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = AstrometryShareImageExtension/AstrometryShareImageExtension.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = AstrometryShareImageExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				OTHER_CFLAGS = "-DEXTENSION_TARGET";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		35E85ADD1A59C38500D8CBB8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = AstrometryShareImageExtension/AstrometryShareImageExtension.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = AstrometryShareImageExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				OTHER_CFLAGS = "-DEXTENSION_TARGET";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -601,6 +767,14 @@
 			buildConfigurations = (
 				35E85A911A58884700D8CBB8 /* Debug */,
 				35E85A921A58884700D8CBB8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		35E85ADB1A59C38500D8CBB8 /* Build configuration list for PBXNativeTarget "AstrometryShareImageExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				35E85ADC1A59C38500D8CBB8 /* Debug */,
+				35E85ADD1A59C38500D8CBB8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
