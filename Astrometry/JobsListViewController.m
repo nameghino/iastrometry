@@ -46,11 +46,11 @@ typedef NS_ENUM(NSInteger, JobsTableViewSection) {
     
     self.navigationItem.title = @"Job list";
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
-                                                                                           target:self
-                                                                                           action:@selector(startNewJobWorkflow:)];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
                                                                                           target:self
-                                                                                          action:@selector(showActionMenu:)];
+                                                                                          action:@selector(startNewJobWorkflow:)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
+                                                                                           target:self
+                                                                                           action:@selector(showActionMenu:)];
     
     self.jobsTableView.dataSource = self;
     self.jobsTableView.delegate = self;
@@ -61,10 +61,10 @@ typedef NS_ENUM(NSInteger, JobsTableViewSection) {
     [self.refreshControl addTarget:self
                             action:@selector(updateJobsList:)
                   forControlEvents:UIControlEventValueChanged];
-
+    
     [self.jobsTableView addSubview:self.refreshControl];
-
-
+    
+    
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
@@ -74,11 +74,20 @@ typedef NS_ENUM(NSInteger, JobsTableViewSection) {
 }
 
 -(void)viewWillAppear:(BOOL)animated {
+    WEAKIFY(self);
     AstrometryService *service = [AstrometryService sharedInstance];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(sessionKeyOperationFinished:)
-                                                 name:kAstrometryServiceSessionKeyOperationFinishedNotificationIdentifier
-                                               object:service];
+    [service performGetSessionKeyRequestWithSuccessBlock:^{
+        STRONGIFY(welf);
+        [sself updateJobsList:nil];
+    } failure:^(NSURLRequest *request, NSURLResponse *response, NSError *error) {
+        [AlertDisplayer showError:error inViewController:self];
+    }];
+    
+    
+    //    [[NSNotificationCenter defaultCenter] addObserver:self
+    //                                             selector:@selector(sessionKeyOperationFinished:)
+    //                                                 name:kAstrometryServiceSessionKeyOperationFinishedNotificationIdentifier
+    //                                               object:service];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -169,17 +178,17 @@ typedef NS_ENUM(NSInteger, JobsTableViewSection) {
                                                                  [sself showImagePicker:YES];
                                                              }];
     UIAlertAction *fromLibraryAction = [UIAlertAction actionWithTitle:@"Library"
-                                                               style:UIAlertActionStyleDefault
-                                                             handler:^(UIAlertAction *action) {
-                                                                 STRONGIFY(welf);
-                                                                 [sself showImagePicker:NO];
-                                                             }];
+                                                                style:UIAlertActionStyleDefault
+                                                              handler:^(UIAlertAction *action) {
+                                                                  STRONGIFY(welf);
+                                                                  [sself showImagePicker:NO];
+                                                              }];
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
-                                                               style:UIAlertActionStyleCancel
-                                                             handler:^(UIAlertAction *action) {
-                                                                 STRONGIFY(welf);
-                                                                 [sself dismissViewControllerAnimated:YES completion:NULL];
-                                                             }];
+                                                           style:UIAlertActionStyleCancel
+                                                         handler:^(UIAlertAction *action) {
+                                                             STRONGIFY(welf);
+                                                             [sself dismissViewControllerAnimated:YES completion:NULL];
+                                                         }];
     
     [alertController addAction:fromCameraAction];
     [alertController addAction:fromLibraryAction];
